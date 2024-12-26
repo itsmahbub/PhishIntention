@@ -22,8 +22,8 @@ if [ $? -eq 0 ]; then
    echo "Activating existing Conda environment $ENV_NAME"
    conda activate "$ENV_NAME"
 else
-   echo "Creating and activating new Conda environment with Python 3.8"
-   conda create -n "$ENV_NAME" python=3.8 -y
+   echo "Creating and activating new Conda environment with Python 3.10"
+   conda create -n "$ENV_NAME" python=3.10 -y
    conda activate "$ENV_NAME"
 fi
 
@@ -32,7 +32,7 @@ fi
 OS=$(uname -s)
 if [[ "$OS" == "Darwin" ]]; then
   echo "Detected macOS. Installing PyTorch and torchvision for macOS..."
-  conda run -n "$ENV_NAME" pip install torch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0
+  conda run -n "$ENV_NAME" pip install torch torchvision torchaudio
   conda run -n "$ENV_NAME" pip install 'git+https://github.com/facebookresearch/detectron2.git'
 else
   # Check for NVIDIA GPU by looking for 'nvcc' or 'nvidia-smi'
