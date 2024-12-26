@@ -80,7 +80,7 @@ else
     echo "unzip could not be found, installing it..."
     sudo apt-get install unzip -y
   fi
-  unzip src.zip
+  unzip -o src.zip
   cd src || exit 1  # Exit if the directory doesn't exist
   # Check if there's a nested 'src/' directory
   if [ -d "src" ]; then
