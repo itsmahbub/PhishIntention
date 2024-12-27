@@ -81,8 +81,7 @@ setup(name='phishintention',
           'selenium-wire',
           'helium', 
           'webdriver-manager',
-          'gdown',
-          'blinker==1.7.0'
+          'gdown'
       ],
       package_data={
             # If any package contains *.txt or *.rst files, include them:
