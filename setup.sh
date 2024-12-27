@@ -1,4 +1,10 @@
 #!/bin/bash
+
+error_exit() {
+    echo "Error: $1" >&2
+    exit 1
+}
+
 # 1. Set ENV_NAME with default value "phishintention" if not already set
 ENV_NAME="${ENV_NAME:-phishintention}"
 # Double check if ENV_NAME is set (it always will be now, but kept for flexibility)
@@ -57,9 +63,10 @@ fi
 if [ -f "requirements.txt" ]; then
   echo "Installing additional Python dependencies from requirements.txt..."
   conda run -n "$ENV_NAME" pip install -r requirements.txt
-else
-  error_exit "requirements.txt not found in the current directory."
 fi
+# else
+#   error_exit "requirements.txt not found in the current directory."
+# fi
 
 # 8. Install the package with verbose output using conda run
 echo "Installing the package..."
@@ -98,6 +105,8 @@ else
   fi
 fi
 
+echo "$package_location"
+echo "$FILEDIR"
 # Replace the placeholder in the YAML template
 sed "s|CONDA_ENV_PATH_PLACEHOLDER|$package_location/phishintention|g" "$FILEDIR/phishintention/configs_template.yaml" > "$package_location/phishintention/configs.yaml"
 cd "$FILEDIR"
