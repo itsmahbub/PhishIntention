@@ -73,7 +73,7 @@ echo "Installing the package..."
 conda run -n "$ENV_NAME" pip install -v .
 
 # Get the package location
-package_location=$(conda run -n "$ENV_NAME" pip show phishintention | grep Location | awk '{print $2}')
+package_location=$(conda info --envs | grep phishllm | awk '{print $2}')/phishintention
 
 # Check if the package location is found and not empty
 if [ -z "$package_location" ]; then
