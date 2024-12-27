@@ -73,7 +73,7 @@ echo "Installing the package..."
 conda run -n "$ENV_NAME" pip install -v .
 
 # Get the package location
-package_location=$(conda info --envs | grep "$ENV_NAME" | awk '{print $3}')
+package_location=$(conda info --envs | grep "$ENV_NAME" | awk '{print $3}')/lib/python3.10/site-packages
 echo "Package location: $package_location"
 
 # Check if the package location is found and not empty
